@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body
-        className={`${outfit.className} antialiased bg-white text-gray-900`}
-      >
+      <body className={`${outfit.className} antialiased bg-white`}>
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

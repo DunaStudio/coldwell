@@ -1,0 +1,11 @@
+export type serviceType = {
+  title: string;
+  description: string;
+  imageSrc: string;
+};
+
+export type heroDataType = {
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+};

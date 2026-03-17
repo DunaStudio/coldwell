@@ -4,7 +4,7 @@ import Image from "next/image";
 export const Navbar = () => {
   return (
     <header className="absolute top-0 left-0 w-full z-50 text-white font-sans">
-      <div className="w-full max-w-268 mx-auto px-8 py-8 flex justify-between items-center">
+      <div className="w-full max-w-350 mx-auto px-8 py-8 flex justify-between items-center">
         <Link href="/" className="hover:opacity-80 transition-opacity">
           <Image
             src="/images/Logo.png"
@@ -15,7 +15,7 @@ export const Navbar = () => {
           />
         </Link>
 
-        <nav className="hidden md:flex gap-8 text-[20px] font-light">
+        <nav className="hidden md:flex gap-8 text-[16px] font-light">
           <Link
             href="#inicio"
             className="hover:text-gray-300 transition-colors"

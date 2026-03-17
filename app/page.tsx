@@ -1,10 +1,11 @@
 import { HeroSection } from "@/sections/HeroSection";
-// Las demás secciones se importarán acá
+import ServicesSection from "@/sections/ServicesSection";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white max-w-screen overflow-hidden">
       <HeroSection />
+      <ServicesSection />
     </main>
   );
 }

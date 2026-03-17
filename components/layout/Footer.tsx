@@ -5,7 +5,7 @@ import { Facebook, Instagram } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="bg-[#15007E] text-white font-sans">
-      <div className="w-full max-w-268 mx-auto px-6 py-16">
+      <div className="w-full max-w-350 mx-auto px-6 py-16">
         <div className="flex flex-col md:flex-row justify-between items-start gap-10">
           <div className="flex flex-col gap-6">
             <Link href="/" className="hover:opacity-80 transition-opacity">
@@ -81,8 +81,8 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-white h-20.5 flex items-center justify-center w-full px-4 text-center">
-        <p className="text-[20px] text-[#707286] font-light flex items-center gap-3">
+      <div className="bg-white py-5 flex items-center justify-center w-full px-4 text-center">
+        <p className="text-[16px] text-[#707286] font-light flex items-center gap-3">
           © {new Date().getFullYear()} Todos los derechos reservados
           <span className="text-[#2000C3]">/</span>
           <span>
