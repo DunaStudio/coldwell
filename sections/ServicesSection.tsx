@@ -2,7 +2,6 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import ServiceCard from "@/components/ui/ServiceCard";
-import mockup from "@/public/Duna.png";
 import { services } from "@/utils/constants";
 
 export default function ServicesSection() {
@@ -18,7 +17,7 @@ export default function ServicesSection() {
   const scrollNext = () => emblaApi?.scrollNext();
 
   return (
-    <div className="embla w-full flex flex-col items-center min-h-screen max-w-screen">
+    <div className="embla w-full flex flex-col items-center min-h-screen max-w-screen border-b border-[#15007e]">
       <div className="bg-[#15007e] w-full h-[40%] z-0 absolute"></div>
       <div className="w-full mx-auto px-6 py-16 z-20 ">
         <div className="w-full max-w-350 mx-auto flex">

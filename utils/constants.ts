@@ -12,6 +12,9 @@ import colocacion from "@/public/images/hero/colocacion.png";
 import cuotas from "@/public/images/hero/cuotas.png";
 import efectivo from "@/public/images/hero/efectivo.png";
 
+import nuevos from "@/public/images/productos/nuevos.png";
+import precurados from "@/public/images/productos/precurados.png";
+
 export const services = [
   {
     title: "Alineación y Balance de precisión",
@@ -84,5 +87,20 @@ export const heroData = [
     title: "Descuento en efectivo",
     subtitle: "Obtené bonificación especial si decidís pagar en efectivo",
     imageSrc: efectivo.src,
+  },
+];
+
+export const products = [
+  {
+    title: "Neumáticos Nuevos",
+    description:
+      "Ofrecemos un catálogo completo de marcas líderes para autos, camionetas, camiones y maquinaria agrícola. Nos enfocamos en brindar neumáticos de última tecnología que garantizan el máximo agarre, seguridad y eficiencia en el consumo de combustible para cualquier tipo de terreno.",
+    imageSrc: nuevos.src,
+  },
+  {
+    title: "Neumáticos Precurados",
+    description:
+      "Es una opción inteligente para reducir costos sin resignar seguridad. Utilizando bandas de primera calidad Goodyear, renovamos la vida útil de sus cascos con un rendimiento equivalente al de un neumático nuevo, siendo la solución más económica y sustentable para su flota.",
+    imageSrc: precurados.src,
   },
 ];
