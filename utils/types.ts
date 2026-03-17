@@ -15,3 +15,11 @@ export type productType = {
   description: string;
   imageSrc: string;
 };
+
+export type productTypesType = {
+  type: string;
+  title: string;
+  description: string;
+  bgImageSrc: string;
+  mainImageSrc: string;
+};

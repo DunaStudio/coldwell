@@ -17,8 +17,8 @@ export default function ServicesSection() {
   const scrollNext = () => emblaApi?.scrollNext();
 
   return (
-    <div className="embla w-full flex flex-col items-center min-h-screen max-w-screen border-b border-[#15007e]">
-      <div className="bg-[#15007e] w-full h-[40%] z-0 absolute"></div>
+    <div className="embla w-full flex flex-col items-center min-h-screen max-w-screen border-b border-primary">
+      <div className="bg-primary w-full h-[40%] z-0 absolute"></div>
       <div className="w-full mx-auto px-6 py-16 z-20 ">
         <div className="w-full max-w-350 mx-auto flex">
           <div className="w-[50%]">
@@ -32,13 +32,13 @@ export default function ServicesSection() {
           </div>
           <div className="w-[50%] flex items-end justify-end gap-1 pr-4">
             <button
-              className="embla__prev border p-3 hover:bg-white transition-all ease-in-out duration-150 cursor-pointer hover:text-[#15007e]"
+              className="embla__prev border p-3 hover:bg-white transition-all ease-in-out duration-150 cursor-pointer hover:text-primary"
               onClick={scrollPrev}
             >
               <ArrowLeft />
             </button>
             <button
-              className="embla__next border p-3 hover:bg-white transition-all ease-in-out duration-150 cursor-pointer hover:text-[#15007e]"
+              className="embla__next border p-3 hover:bg-white transition-all ease-in-out duration-150 cursor-pointer hover:text-primary"
               onClick={scrollNext}
             >
               <ArrowRight />

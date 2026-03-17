@@ -15,6 +15,15 @@ import efectivo from "@/public/images/hero/efectivo.png";
 import nuevos from "@/public/images/productos/nuevos.png";
 import precurados from "@/public/images/productos/precurados.png";
 
+import auto from "@/public/images/productos/auto.png";
+import camioneta from "@/public/images/productos/camioneta.png";
+import camion from "@/public/images/productos/camion.png";
+import tractor from "@/public/images/productos/tractor.png";
+import autobg from "@/public/images/productos/autobg.jpg";
+import camionetabg from "@/public/images/productos/camionetabg.jpg";
+import camionbg from "@/public/images/productos/camionbg.jpg";
+import tractorbg from "@/public/images/productos/tractorbg.jpg";
+
 export const services = [
   {
     title: "Alineación y Balance de precisión",
@@ -102,5 +111,40 @@ export const products = [
     description:
       "Es una opción inteligente para reducir costos sin resignar seguridad. Utilizando bandas de primera calidad Goodyear, renovamos la vida útil de sus cascos con un rendimiento equivalente al de un neumático nuevo, siendo la solución más económica y sustentable para su flota.",
     imageSrc: precurados.src,
+  },
+];
+
+export const productTypes = [
+  {
+    type: "Autos",
+    title: "Seguridad y confort en la ciudad",
+    description:
+      "Ofrecemos una amplia selección de neumáticos diseñados para brindar un andar suave, máximo agarre en frenado y una eficiencia de combustible superior. La mejor tecnología para el uso diario de tu vehículo.",
+    bgImageSrc: autobg.src,
+    mainImageSrc: auto.src,
+  },
+  {
+    type: "Camionetas",
+    title: "Potencia para todo terreno",
+    description:
+      "Equipamos tu pick-up con neumáticos de alta resistencia, ideales tanto para el asfalto como para caminos exigentes. Durabilidad garantizada y tracción optimizada para que nada detenga tu carga o tu aventura.",
+    bgImageSrc: camionetabg.src,
+    mainImageSrc: camioneta.src,
+  },
+  {
+    type: "Camiones",
+    title: "Máximo rendimiento para el transporte",
+    description:
+      "Soluciones robustas diseñadas para flotas pesadas. Nos enfocamos en neumáticos de alto kilometraje y resistencia estructural, asegurando que tu unidad pase más tiempo en la ruta y menos en el taller.",
+    bgImageSrc: camionbg.src,
+    mainImageSrc: camion.src,
+  },
+  {
+    type: "Vial y Agrícola",
+    title: "Tracción pesada para el trabajo duro",
+    description:
+      "Entendemos las exigencias del campo y la construcción. Proveemos neumáticos de gran flotación y resistencia a cortes, optimizados para maquinaria pesada que requiere estabilidad y fuerza en superficies complejas.",
+    bgImageSrc: tractorbg.src,
+    mainImageSrc: tractor.src,
   },
 ];
