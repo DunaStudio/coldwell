@@ -14,6 +14,9 @@
   --color-secondary: #707286;
   --color-tertiary: #5c5e75;
   --color-lightGray: #f0f0f0;
+
+  --animate-scroll-up: scroll-up 12s linear infinite;
+  --animate-scroll-down: scroll-down 12s linear infinite;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +24,37 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-scroll-up {
+  animation: scroll-up 12s linear infinite;
+}
+
+.animate-scroll-down {
+  animation: scroll-down 12s linear infinite;
+}
+
+.animate-scroll-up:hover,
+.animate-scroll-down:hover {
+  animation-play-state: paused;
 }
 
 body {
