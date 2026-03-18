@@ -111,7 +111,7 @@ export default function CompanySection() {
   return (
     <div className="lg:h-screen w-full flex justify-center items-center bg-primary overflow-hidden">
       <div className="max-w-350 w-full flex flex-col lg:flex-row gap-10 h-full">
-        <div className="w-full lg:w-[35%] flex flex-col justify-center text-white p-10">
+        <div className="w-full lg:w-[35%] flex flex-col justify-center text-white p-5">
           <p className="text-[16px] lg:text-[24px] font-light mb-5">
             ¿Quienes somos?
           </p>
