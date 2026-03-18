@@ -109,7 +109,7 @@ export default function ProductType() {
               fill
               preload={true}
               quality={75}
-              priority={true}
+              loading="eager"
               className="object-cover"
             />
           </div>
@@ -129,7 +129,7 @@ export default function ProductType() {
               fill
               preload={true}
               quality={75}
-              priority={true}
+              loading="eager"
               className="object-cover"
             />
           </div>
