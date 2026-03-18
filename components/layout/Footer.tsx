@@ -82,7 +82,7 @@ export const Footer = () => {
       </div>
 
       <div className="bg-white py-5 flex items-center justify-center w-full px-4 text-center">
-        <p className="text-[16px] text-[#707286] font-light flex items-center gap-3">
+        <p className="text-[16px] text-secondary font-light flex items-center gap-3">
           © {new Date().getFullYear()} Todos los derechos reservados
           <span className="text-[#2000C3]">/</span>
           <span>

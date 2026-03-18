@@ -24,6 +24,20 @@ import camionetabg from "@/public/images/productos/camionetabg.jpg";
 import camionbg from "@/public/images/productos/camionbg.jpg";
 import tractorbg from "@/public/images/productos/tractorbg.jpg";
 
+import pirelli from "@/public/images/marcas/pirelli.png";
+import bridgestone from "@/public/images/marcas/bridgestone.png";
+import michelin from "@/public/images/marcas/michelin.png";
+import goodyear from "@/public/images/marcas/goodyear.png";
+import bfgoodrich from "@/public/images/marcas/bfgoodrich.png";
+import firemax from "@/public/images/marcas/firemax.png";
+import haida from "@/public/images/marcas/haida.png";
+import maxam from "@/public/images/marcas/maxam.png";
+import lorgian from "@/public/images/marcas/lorgian.png";
+import sailun from "@/public/images/marcas/sailun.png";
+import triangle from "@/public/images/marcas/triangle.png";
+import bkt from "@/public/images/marcas/bkt.png";
+import kumho from "@/public/images/marcas/kumho.png";
+
 export const services = [
   {
     title: "Alineación y Balance de precisión",
@@ -147,4 +161,20 @@ export const productTypes = [
     bgImageSrc: tractorbg.src,
     mainImageSrc: tractor.src,
   },
+];
+
+export const brands = [
+  { name: "Pirelli", imageSrc: pirelli.src },
+  { name: "Bridgestone", imageSrc: bridgestone.src },
+  { name: "Michelin", imageSrc: michelin.src },
+  { name: "Firemax", imageSrc: firemax.src },
+  { name: "Goodyear", imageSrc: goodyear.src },
+  { name: "BFGoodrich", imageSrc: bfgoodrich.src },
+  { name: "Haida", imageSrc: haida.src },
+  { name: "Maxam", imageSrc: maxam.src },
+  { name: "Lorgian", imageSrc: lorgian.src },
+  { name: "Sailun", imageSrc: sailun.src },
+  { name: "Triangle", imageSrc: triangle.src },
+  { name: "BKT", imageSrc: bkt.src },
+  { name: "Kumho", imageSrc: kumho.src },
 ];
