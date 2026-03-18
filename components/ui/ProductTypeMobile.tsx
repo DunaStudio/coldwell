@@ -1,7 +1,7 @@
 "use client";
 import { productTypes } from "@/utils/constants";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function ProductTypeMobile() {
@@ -26,8 +26,21 @@ export default function ProductTypeMobile() {
 
   const item = productTypes[displayed];
 
+  useEffect(() => {
+    productTypes.forEach((type) => {
+      const img1 = new window.Image();
+      const img2 = new window.Image();
+      img1.src =
+        typeof type.bgImageSrc === "string" ? type.bgImageSrc : type.bgImageSrc;
+      img2.src =
+        typeof type.mainImageSrc === "string"
+          ? type.mainImageSrc
+          : type.mainImageSrc;
+    });
+  }, []);
+
   return (
-    <div className="w-full relative mt-5 p-5 z-20">
+    <div className="w-full relative mt-5 z-20">
       <div className="bg-white px-6 pt-8 pb-6 flex flex-col gap-4 border border-lightGray">
         <p
           className="text-primary text-[14px] font-semibold uppercase tracking-widest"
@@ -98,6 +111,7 @@ export default function ProductTypeMobile() {
               src={item.bgImageSrc}
               alt={item.title}
               fill
+              preload={true}
               className="object-cover"
             />
           </div>
@@ -114,6 +128,7 @@ export default function ProductTypeMobile() {
             src={item.mainImageSrc}
             alt={item.title}
             fill
+            preload={true}
             className="object-contain object-bottom"
           />
         </div>
