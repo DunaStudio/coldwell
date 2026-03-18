@@ -77,3 +77,13 @@ body {
   flex: 0 0 100%;
   min-width: 0;
 }
+
+::selection {
+  background-color: #2000c3;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #2000c3;
+  color: #ffffff;
+}

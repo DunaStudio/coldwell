@@ -16,7 +16,6 @@ export default function ServiceCard({
           fill
           sizes="25vw"
         />
-        {/* <div className="absolute inset-0 bg-primary opacity-30 group-hover:opacity-0 transition-opacity duration-300"></div> */}
       </div>
       <div>
         <h3 className="text-[24px] leading-[115%] font-semibold mt-3.75 mb-4.5 text-[#5C5E75]">

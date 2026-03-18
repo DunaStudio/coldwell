@@ -41,7 +41,7 @@ export const Navbar = () => {
             Servicios
           </Link>
           <Link
-            href="#contacto"
+            href="contacto"
             className="hover:text-gray-300 transition-colors"
           >
             Contacto

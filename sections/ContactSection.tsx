@@ -1,26 +1,26 @@
 import Image from "next/image";
-import bgContacto from "@/public/images/contacto/fondo.png";
+import bgContacto from "@/public/images/contacto/fondo.jpg";
 
 export default function ContactSection() {
   return (
     <section
-      id="contacto"
+      id="#contacto"
       className="w-full relative flex flex-col items-center pt-25 mt-10 font-sans"
     >
       <div className="absolute inset-0 z-0 flex flex-col">
-        <div className="w-full flex-1 relative">
-          <Image
-            src={bgContacto}
-            alt="Taller Coldwell"
-            fill
-            className="object-cover object-top grayscale"
+        <div className="w-full flex-1 relative overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-top grayscale"
+            style={{
+              backgroundImage: `url(${bgContacto.src})`,
+              backgroundAttachment: "fixed",
+            }}
           />
-          <div className="absolute inset-0 bg-[#130C39]/30"></div>
         </div>
-        <div className="w-full h-45 bg-[#15007E]"></div>
+        <div className="w-full h-45 bg-primary"></div>
       </div>
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#15007E] text-white text-[40px] font-normal px-12 py-2 z-30 leading-none">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-[40px] font-normal px-12 py-2 z-30 leading-none">
         Contacto
       </div>
 
@@ -30,51 +30,51 @@ export default function ContactSection() {
             <form className="flex flex-col gap-5 h-full">
               <div className="flex gap-4">
                 <div className="flex flex-col gap-2 w-1/2">
-                  <label className="text-[20px] text-[#5C5E75] font-light border-l-[3px] border-[#15007E] pl-2 leading-none">
+                  <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
                     Nombre y apellido
                   </label>
                   <input
                     type="text"
                     placeholder="Ingrese su nombre y apellido"
-                    className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-[#15007E] text-[14px] font-light text-[#5C5E75] placeholder:text-[#5C5E75]/60 transition-all"
+                    className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                   />
                 </div>
                 <div className="flex flex-col gap-2 w-1/2">
-                  <label className="text-[20px] text-[#5C5E75] font-light border-l-[3px] border-[#15007E] pl-2 leading-none">
+                  <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
                     Email
                   </label>
                   <input
                     type="email"
                     placeholder="Ingrese su email"
-                    className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-[#15007E] text-[14px] font-light text-[#5C5E75] placeholder:text-[#5C5E75]/60 transition-all"
+                    className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                   />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[20px] text-[#5C5E75] font-light border-l-[3px] border-[#15007E] pl-2 leading-none">
+                <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
                   Consulta
                 </label>
                 <input
                   type="text"
                   placeholder="Motivo consulta"
-                  className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-[#15007E] text-[14px] font-light text-[#5C5E75] placeholder:text-[#5C5E75]/60 transition-all"
+                  className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                 />
               </div>
 
               <div className="flex flex-col gap-2 flex-1">
-                <label className="text-[20px] text-[#5C5E75] font-light border-l-[3px] border-[#15007E] pl-2 leading-none">
+                <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
                   Mensaje
                 </label>
                 <textarea
                   placeholder="Ingrese su mensaje aquí"
-                  className="bg-[#F5F5F5] h-full p-4 focus:outline-none focus:ring-1 focus:ring-[#15007E] text-[14px] font-light text-[#5C5E75] placeholder:text-[#5C5E75]/60 resize-none transition-all"
+                  className="bg-[#F5F5F5] h-full p-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 resize-none transition-all"
                 ></textarea>
               </div>
 
               <button
                 type="button"
-                className="bg-[#15007E] text-white text-[20px] font-light py-3 w-full hover:bg-[#2000C3] transition-colors mt-2 cursor-pointer"
+                className="bg-primary text-white text-[20px] border border-primary font-light py-3 w-full hover:bg-white hover:text-primary hover:border-primary transition-all ease-in-out duration-200 mt-2 cursor-pointer"
               >
                 Enviar
               </button>
