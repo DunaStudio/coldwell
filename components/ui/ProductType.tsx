@@ -107,6 +107,9 @@ export default function ProductType() {
               src={prevTypeRef.current.bgImageSrc}
               alt={prevTypeRef.current.title}
               fill
+              preload={true}
+              quality={75}
+              priority={true}
               className="object-cover"
             />
           </div>
@@ -124,6 +127,9 @@ export default function ProductType() {
               src={displayedType.bgImageSrc}
               alt={displayedType.title}
               fill
+              preload={true}
+              quality={75}
+              priority={true}
               className="object-cover"
             />
           </div>

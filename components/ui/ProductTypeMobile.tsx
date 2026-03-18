@@ -100,7 +100,7 @@ export default function ProductTypeMobile() {
               fill
               preload={true}
               quality={75}
-              loading="eager"
+              priority={true}
               className="object-cover"
             />
           </div>
@@ -119,7 +119,7 @@ export default function ProductTypeMobile() {
             fill
             preload={true}
             quality={75}
-            loading="eager"
+            priority={true}
             className="object-contain object-bottom"
           />
         </div>
