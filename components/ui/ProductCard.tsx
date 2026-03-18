@@ -32,7 +32,7 @@ export default function ProductCard({
       </div>
 
       <div className="hidden lg:block relative overflow-hidden group h-87.5">
-        <p className="absolute text-white text-[32px] z-30 font-semibold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <p className="absolute text-white text-center leading-[115%] w-full lg:text-[32px] z-30 font-semibold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           {title}
         </p>
         <div className="bg-primary opacity-0 group-hover:opacity-30 w-full h-full absolute z-20 transition-all ease-in-out duration-300" />
