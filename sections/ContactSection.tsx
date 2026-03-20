@@ -4,10 +4,10 @@ import bgContacto from "@/public/images/contacto/fondo.jpg";
 export default function ContactSection() {
   return (
     <section
-      id="#contacto"
-      className="w-full relative flex flex-col items-center pt-25 mt-10 font-sans"
+      id="contacto"
+      className="w-full relative flex flex-col items-center pt-5 lg:pt-25 mt-10 font-sans"
     >
-      <div className="absolute inset-0 z-0 flex flex-col">
+      <div className="absolute inset-0 z-0 flex-col hidden md:flex">
         <div className="w-full flex-1 relative overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-top grayscale"
@@ -20,17 +20,17 @@ export default function ContactSection() {
         <div className="w-full h-45 bg-primary"></div>
       </div>
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-[40px] font-normal px-12 py-2 z-30 leading-none">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white text-[24px] lg:text-[36px] font-normal leading-[115%]  px-12 py-2 z-30">
         Contacto
       </div>
 
-      <div className="relative z-20 w-full max-w-268 flex flex-col shadow-2xl">
-        <div className="w-full flex h-124.25 bg-white">
-          <div className="w-full md:w-[60%] p-10 flex flex-col justify-between h-full bg-white">
+      <div className="relative z-20 w-full lg:max-w-268 flex flex-col">
+        <div className="w-full flex h-full bg-white">
+          <div className="w-full md:w-[60%] p-5 lg:p-10 flex flex-col justify-between h-full bg-white">
             <form className="flex flex-col gap-5 h-full">
-              <div className="flex gap-4">
-                <div className="flex flex-col gap-2 w-1/2">
-                  <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
+              <div className="flex flex-col lg:flex-row gap-4">
+                <div className="flex flex-col gap-2 w-full lg:w-1/2">
+                  <label className="text-[14px] lg:text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
                     Nombre y apellido
                   </label>
                   <input
@@ -39,7 +39,7 @@ export default function ContactSection() {
                     className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                   />
                 </div>
-                <div className="flex flex-col gap-2 w-1/2">
+                <div className="flex flex-col gap-2 w-full lg:w-1/2">
                   <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
                     Email
                   </label>

@@ -5,8 +5,11 @@ import Image from "next/image";
 import fondo from "@/public/images/hero/fondo.png";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { useParallax } from "@/hooks/useParallax";
 
 export const HeroSection = () => {
+  const parallaxRef = useParallax(0.4); // 0 = sin efecto, 1 = muy pronunciado
+
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 3000, stopOnInteraction: false }),
   ]);
@@ -14,14 +17,22 @@ export const HeroSection = () => {
   return (
     <section
       id="inicio"
-      className="relative pt-40 flex flex-col items-center  font-sans overflow-hidden min-h-[80vh] lg:min-h-screen max-w-screen"
-      style={{
-        backgroundImage: `url(${fondo.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="relative  flex flex-col items-center font-sans overflow-hidden min-h-[80vh] lg:min-h-screen max-w-screen"
     >
+      <div className="absolute inset-0 overflow-hidden">
+        <div
+          ref={parallaxRef}
+          className="absolute inset-0 -top-[20%] -bottom-[20%]"
+        >
+          <Image
+            src={fondo}
+            alt="Fondo Hero"
+            fill
+            className="object-cover object-top saturate-0 brightness-150"
+          />
+        </div>
+      </div>
+      <div className="w-full h-full bg-primary opacity-40 absolute z-10 lg:min-h-screen"></div>
       <div className="container mx-auto px-6 relative z-10 mb-8 flex-1 flex flex-col justify-center max-w-350">
         <h1 className="text-white text-[24px] lg:text-[64px] leading-[1.15] font-light tracking-normal text-center lg:text-start">
           Mucho más que neumáticos <br />

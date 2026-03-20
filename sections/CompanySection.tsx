@@ -38,7 +38,6 @@ function ImageColumn({
       : [0, -totalHeight];
 
   return isMobile ? (
-    // Fila horizontal para mobile
     <div className="w-full overflow-hidden" style={{ height: IMG_HEIGHT }}>
       <motion.div
         className="flex flex-row"
@@ -63,7 +62,6 @@ function ImageColumn({
       </motion.div>
     </div>
   ) : (
-    // Columna vertical para desktop
     <div className="flex-1 overflow-hidden" style={{ height: "100%" }}>
       <motion.div
         className="flex flex-col"
@@ -112,7 +110,7 @@ export default function CompanySection() {
     <div className="lg:h-screen w-full flex justify-center items-center bg-primary overflow-hidden">
       <div className="max-w-350 w-full flex flex-col lg:flex-row gap-10 h-full">
         <div className="w-full lg:w-[35%] flex flex-col justify-center text-white p-5">
-          <p className="text-[16px] lg:text-[24px] font-light mb-5">
+          <p className="text-white text-[16px] lg:text-[24px] font-light mb-5">
             ¿Quienes somos?
           </p>
           <hr className="mb-6 lg:mb-10" />

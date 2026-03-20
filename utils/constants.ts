@@ -48,43 +48,43 @@ export const services = [
   {
     title: "Reparación profesional de Llantas",
     description:
-      "Restauramos llantas dañadas con precisión, recuperando su forma y seguridad para un rendimiento óptimo en cada trayecto.",
+      "Reparamos todo tipo de daños en tus llantas con técnicas profesionales para devolverles su rendimiento y garantizar tu seguridad en ruta.",
     imageSrc: reparacionimage,
   },
   {
     title: "Rotación de Neumáticos",
     description:
-      "Distribuimos el desgaste de los neumáticos de manera uniforme, prolongando su vida útil y mejorando la estabilidad del vehículo.",
+      "Intercambiamos tus neumáticos estratégicamente para distribuir el desgaste de manera uniforme y prolongar su vida útil al máximo.",
     imageSrc: rotacionImage,
   },
   {
     title: "Reparación de Tren Delantero y Sistema de Suspensión",
     description:
-      "Ajustamos y reparamos componentes clave para garantizar una conducción estable, segura y libre de vibraciones.",
+      "Diagnosticamos y corregimos fallas en la suspensión y el tren delantero para que tu vehículo responda con precisión en cada curva.",
     imageSrc: trenDelanteroimage,
   },
   {
     title: "Mantenimiento y Reparación del Sistema de Frenos",
     description:
-      "Revisamos y optimizamos el sistema de frenos para asegurar una respuesta eficaz y máxima seguridad en todo momento.",
+      "Inspeccionamos y reparamos pastillas, discos y líquido de frenos para que tu auto detenga siempre de forma segura y confiable.",
     imageSrc: frenosimage,
   },
   {
     title: "Sustitución y Servicio de Amortiguadores",
     description:
-      "Mejoramos la absorción de impactos y el control del vehículo, brindando mayor confort y estabilidad en cada recorrido.",
+      "Reemplazamos amortiguadores gastados para devolverte la estabilidad, el confort y el control que tu vehículo necesita en ruta.",
     imageSrc: suspensionImage,
   },
   {
     title: "Lavadero",
     description:
-      "Dejamos tu vehículo impecable por dentro y por fuera, cuidando cada detalle para una presentación perfecta.",
+      "Lavamos tu vehículo de forma completa, interior y exterior, con productos que cuidan la pintura y dejan cada rincón impecable.",
     imageSrc: lavadero,
   },
   {
     title: "Lubricentro",
     description:
-      "Realizamos cambios de aceite y lubricación completa para proteger el motor y asegurar su óptimo funcionamiento.",
+      "Realizamos el cambio de aceite y lubricación completa para mantener tu motor protegido y funcionando en óptimas condiciones.",
     imageSrc: lubricentroImage,
   },
   {
