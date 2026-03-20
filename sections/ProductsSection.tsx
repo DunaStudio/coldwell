@@ -5,7 +5,10 @@ import { products } from "@/utils/constants";
 
 export default function ProductsSection() {
   return (
-    <div className="w-full flex flex-col justify-center items-center relative bg-white">
+    <section
+      id="productos"
+      className="w-full flex flex-col justify-center items-center relative bg-white"
+    >
       <h3 className="text-primary text-[24px] lg:text-[40px] font-normal leading-[115%] my-10">
         Nuestros productos
       </h3>
@@ -28,6 +31,6 @@ export default function ProductsSection() {
         <ProductType />
       </div>
       <div className="bg-primary w-full h-[35%] absolute bottom-0 border-red-500 z-10"></div>
-    </div>
+    </section>
   );
 }

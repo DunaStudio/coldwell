@@ -29,7 +29,10 @@ export default function ServicesSection() {
   const scrollNext = () => emblaApi?.scrollNext();
 
   return (
-    <div className="w-full flex flex-col items-center max-w-screen border-b border-primary relative overflow-hidden">
+    <section
+      id="servicios"
+      className="w-full flex flex-col items-center max-w-screen border-b border-primary relative overflow-hidden"
+    >
       <div className="bg-primary w-full h-[60%] z-0 absolute top-0 left-0" />
 
       <div className="w-full mx-auto px-6 py-16 z-20">
@@ -90,6 +93,6 @@ export default function ServicesSection() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
