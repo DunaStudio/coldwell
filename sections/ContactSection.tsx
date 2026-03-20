@@ -56,7 +56,7 @@ export default function ContactSection() {
       id="contacto"
       className="w-full relative flex flex-col items-center pt-5 lg:pt-25 mt-10 font-sans"
     >
-      <div className="absolute inset-0 z-0 flex-col hidden md:flex">
+      <div className="absolute inset-0 z-0 flex-col hidden lg:flex">
         <div className="w-full flex-1 relative overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-top grayscale"
@@ -80,9 +80,9 @@ export default function ContactSection() {
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 h-full"
             >
-              <div className="flex gap-4">
-                <div className="flex flex-col gap-2 w-1/2">
-                  <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
+              <div className="flex flex-col lg:flex-row gap-4">
+                <div className="flex flex-col gap-2 w-full lg:w-1/2">
+                  <label className="text-[14px] lg:text-[20px] text-primary font-light border-l-2 border-primary pl-2 leading-none">
                     Nombre y apellido
                   </label>
                   <input
@@ -96,7 +96,7 @@ export default function ContactSection() {
                   />
                 </div>
                 <div className="flex flex-col gap-2 w-full lg:w-1/2">
-                  <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
+                  <label className="text-[14px] lg:text-[20px] text-primary font-light border-l-2 border-primary pl-2 leading-none">
                     Email
                   </label>
                   <input
@@ -112,7 +112,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
+                <label className="text-[12px] lg:text-[20px] text-primary font-light border-l-2 border-primary pl-2 leading-none">
                   Consulta
                 </label>
                 <input
@@ -126,7 +126,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex flex-col gap-2 flex-1">
-                <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
+                <label className="text-[14px] lg:text-[20px] text-primary font-light border-l-2 border-primary pl-2 leading-none">
                   Mensaje
                 </label>
                 <textarea
