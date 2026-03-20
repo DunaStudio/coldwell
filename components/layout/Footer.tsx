@@ -89,7 +89,14 @@ export const Footer = () => {
           <span className="text-[#2000C3]">/</span>
           <span>
             Desarrollado por{" "}
-            <span className="text-[#15007E] font-semibold">Duna Studio</span>
+            <a
+              href="https://www.instagram.com/dunastudiosj/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#15007E] font-semibold tracking-wider hover:text-[#C8643E] transition-colors duration-300"
+            >
+              Duna Studio
+            </a>
           </span>
         </p>
       </div>
