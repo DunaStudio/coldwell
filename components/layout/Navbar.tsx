@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/public/images/Logo.png";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,14 +20,14 @@ export const Navbar = () => {
 
   return (
     <header className="absolute top-0 left-0 w-full z-50 text-white font-sans">
-      <div className="w-full max-w-350 mx-auto px-6 py-6 md:px-8 md:py-8 flex justify-between items-center relative">
+      <div className="w-full max-w-350 mx-auto px-6 py-6 md:px-8 md:py-8 flex justify-end md:justify-center lg:justify-between items-center relative">
         <Link
           href="/"
-          className="hover:opacity-80 transition-opacity relative z-50"
+          className="hover:opacity-80 transition-opacity relative z-50 hidden lg:block"
           onClick={closeMenu}
         >
           <Image
-            src="/images/Logo.png"
+            src={logo}
             alt="Coldwell Neumáticos"
             width={200}
             height={50}

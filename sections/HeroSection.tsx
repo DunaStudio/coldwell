@@ -6,9 +6,10 @@ import fondo from "@/public/images/hero/fondo.png";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useParallax } from "@/hooks/useParallax";
+import Logo from "@/public/images/Logo.png";
 
 export const HeroSection = () => {
-  const parallaxRef = useParallax(0.4); // 0 = sin efecto, 1 = muy pronunciado
+  const parallaxRef = useParallax(0.4);
 
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 3000, stopOnInteraction: false }),
@@ -17,7 +18,7 @@ export const HeroSection = () => {
   return (
     <section
       id="inicio"
-      className="relative  flex flex-col items-center font-sans overflow-hidden min-h-[80vh] lg:min-h-screen max-w-screen"
+      className="relative flex flex-col items-center font-sans overflow-hidden min-h-screen max-w-screen"
     >
       <div className="absolute inset-0 overflow-hidden">
         <div
@@ -32,17 +33,20 @@ export const HeroSection = () => {
           />
         </div>
       </div>
-      <div className="w-full h-full bg-primary opacity-40 absolute z-10 lg:min-h-screen"></div>
+      <div className="w-full h-full bg-primary opacity-40 absolute z-10 min-h-screen"></div>
       <div className="container mx-auto px-6 relative z-10 mb-8 flex-1 flex flex-col justify-center max-w-350">
+        <div className="w-full max-w-[70vw] md:max-w-350 flex justify-center items-center relative mb-5 h-30 lg:hidden mx-auto">
+          <Image
+            src={Logo}
+            alt="Codlwell Logo"
+            className="object-contain"
+            fill
+          />
+        </div>
         <h1 className="text-white text-[24px] lg:text-[64px] leading-[1.15] font-light tracking-normal text-center lg:text-start">
           Mucho más que neumáticos <br />
           <span className="font-bold">cuidamos tu camino</span>
         </h1>
-        <p className="text-white text-[14px] lg:text-[16px] leading-normal mt-4 mx-auto lg:ml-0 max-w-[85%] md:max-w-[70%] lg:max-w-[50%] text-center w-full lg:text-start">
-          Morbi tincidunt viverra nisl pharetra vehicula. Nulla facilisi.
-          Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-          posuere cubilia curae. Praesent cursus porttitor pretium.
-        </p>
       </div>
 
       <div className="relative w-full z-10 items-start justify-between max-w-350 mx-auto gap-10 py-10 hidden lg:flex">
