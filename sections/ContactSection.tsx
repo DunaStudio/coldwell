@@ -1,7 +1,56 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import bgContacto from "@/public/images/contacto/fondo.jpg";
 
 export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    nombreApellido: "",
+    email: "",
+    consulta: "",
+    mensaje: "",
+  });
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setFormData({
+          nombreApellido: "",
+          email: "",
+          consulta: "",
+          mensaje: "",
+        });
+        setTimeout(() => setStatus("idle"), 4000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 4000);
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
+  };
+
   return (
     <section
       id="#contacto"
@@ -27,7 +76,10 @@ export default function ContactSection() {
       <div className="relative z-20 w-full max-w-268 flex flex-col shadow-2xl">
         <div className="w-full flex h-124.25 bg-white">
           <div className="w-full md:w-[60%] p-10 flex flex-col justify-between h-full bg-white">
-            <form className="flex flex-col gap-5 h-full">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-5 h-full"
+            >
               <div className="flex gap-4">
                 <div className="flex flex-col gap-2 w-1/2">
                   <label className="text-[20px] text-tertiary font-light border-l-[3px] border-primary pl-2 leading-none">
@@ -35,6 +87,10 @@ export default function ContactSection() {
                   </label>
                   <input
                     type="text"
+                    name="nombreApellido"
+                    value={formData.nombreApellido}
+                    onChange={handleChange}
+                    required
                     placeholder="Ingrese su nombre y apellido"
                     className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                   />
@@ -45,6 +101,10 @@ export default function ContactSection() {
                   </label>
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
                     placeholder="Ingrese su email"
                     className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                   />
@@ -57,6 +117,9 @@ export default function ContactSection() {
                 </label>
                 <input
                   type="text"
+                  name="consulta"
+                  value={formData.consulta}
+                  onChange={handleChange}
                   placeholder="Motivo consulta"
                   className="bg-[#F5F5F5] h-11.5 px-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 transition-all"
                 />
@@ -67,16 +130,27 @@ export default function ContactSection() {
                   Mensaje
                 </label>
                 <textarea
+                  name="mensaje"
+                  value={formData.mensaje}
+                  onChange={handleChange}
+                  required
                   placeholder="Ingrese su mensaje aquí"
                   className="bg-[#F5F5F5] h-full p-4 focus:outline-none focus:ring-1 focus:ring-primary text-[14px] font-light text-tertiary placeholder:text-tertiary/60 resize-none transition-all"
                 ></textarea>
               </div>
 
               <button
-                type="button"
-                className="bg-primary text-white text-[20px] border border-primary font-light py-3 w-full hover:bg-white hover:text-primary hover:border-primary transition-all ease-in-out duration-200 mt-2 cursor-pointer"
+                type="submit"
+                disabled={status === "loading"}
+                className="bg-primary text-white text-[20px] border border-primary font-light py-3 w-full hover:bg-white hover:text-primary hover:border-primary transition-all ease-in-out duration-200 mt-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Enviar
+                {status === "loading"
+                  ? "Enviando..."
+                  : status === "success"
+                    ? "¡Mensaje Enviado!"
+                    : status === "error"
+                      ? "Error, intentar de nuevo"
+                      : "Enviar"}
               </button>
             </form>
           </div>
