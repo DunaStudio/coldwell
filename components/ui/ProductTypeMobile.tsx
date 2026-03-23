@@ -1,7 +1,7 @@
 "use client";
 import { productTypes } from "@/utils/constants";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function ProductTypeMobile() {
@@ -75,7 +75,7 @@ export default function ProductTypeMobile() {
           href={`https://wa.me/542646252213?text=${encodeURIComponent(`Hola Coldwell!`)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 bg-primary text-white text-[18px] font-light py-4 text-center border-x border-lightGray hover:bg-white hover:text-primary transition-all duration-150 "
+          className="flex-1 bg-primary text-white text-[18px] font-light py-4 text-center border-x border-lightGray hover:bg-white hover:text-primary transition-all duration-150"
         >
           Consultar
         </a>
@@ -89,45 +89,47 @@ export default function ProductTypeMobile() {
       </div>
 
       <div className="relative w-full h-80">
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            style={{
-              opacity: animating ? 0 : 1,
-              transition: "opacity 300ms ease",
-              position: "absolute",
-              inset: 0,
-            }}
-            className="border border-lightGray border-t-0"
-          >
-            <Image
-              src={item.bgImageSrc}
-              alt={item.title}
-              fill
-              preload={true}
-              quality={75}
-              loading="eager"
-              className="object-cover"
-            />
-          </div>
+        <div className="absolute inset-0 overflow-hidden border border-lightGray border-t-0">
+          {productTypes.map((pt, i) => (
+            <div
+              key={pt.type}
+              className="absolute inset-0"
+              style={{
+                opacity: i === displayed && !animating ? 1 : 0,
+                transition: "opacity 300ms ease",
+              }}
+            >
+              <Image
+                src={pt.bgImageSrc}
+                alt={pt.title}
+                fill
+                quality={50}
+                loading={i === 0 ? "eager" : "lazy"}
+                className="object-cover"
+              />
+            </div>
+          ))}
         </div>
 
-        <div
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/5 w-[95%] h-[85%] z-50"
-          style={{
-            opacity: animating ? 0 : 1,
-            transition: "opacity 300ms ease, transform 300ms ease",
-          }}
-        >
-          <Image
-            src={item.mainImageSrc}
-            alt={item.title}
-            fill
-            preload={true}
-            quality={75}
-            loading="eager"
-            className="object-contain object-bottom"
-          />
-        </div>
+        {productTypes.map((pt, i) => (
+          <div
+            key={pt.type}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/5 w-[95%] h-[85%] z-50"
+            style={{
+              opacity: i === displayed && !animating ? 1 : 0,
+              transition: "opacity 300ms ease",
+            }}
+          >
+            <Image
+              src={pt.mainImageSrc}
+              alt={pt.title}
+              fill
+              quality={50}
+              loading={i === 0 ? "eager" : "lazy"}
+              className="object-contain object-bottom"
+            />
+          </div>
+        ))}
       </div>
 
       <div className="flex justify-center gap-2 py-4 bg-primary mt-10">
