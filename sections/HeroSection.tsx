@@ -7,13 +7,25 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useParallax } from "@/hooks/useParallax";
 import Logo from "@/public/images/Logo.png";
+import { useEffect, useState } from "react";
 
 export const HeroSection = () => {
-  const parallaxRef = useParallax(0.4);
+  const parallaxRef = useParallax(0.7);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
 
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 3000, stopOnInteraction: false }),
   ]);
+
+  const lines = [
+    { text: "Mucho más que neumáticos", bold: false, delay: "0ms" },
+    { text: "cuidamos tu camino", bold: true, delay: "120ms" },
+  ];
 
   return (
     <section
@@ -47,8 +59,20 @@ export const HeroSection = () => {
           />
         </div>
         <h1 className="text-white text-[24px] lg:text-[64px] leading-[1.15] font-light tracking-normal text-center lg:text-start">
-          Mucho más que neumáticos <br />
-          <span className="font-bold">cuidamos tu camino</span>
+          {lines.map((line, i) => (
+            <div key={i} className="overflow-hidden">
+              <span
+                className={`block ${line.bold ? "font-bold" : "font-light"}`}
+                style={{
+                  transform: visible ? "translateY(0%)" : "translateY(110%)",
+                  opacity: visible ? 1 : 0,
+                  transition: `transform 700ms cubic-bezier(0.33, 1, 0.68, 1) ${line.delay}, opacity 500ms ease ${line.delay}`,
+                }}
+              >
+                {line.text}
+              </span>
+            </div>
+          ))}
         </h1>
       </div>
 
