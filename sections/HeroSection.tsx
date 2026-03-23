@@ -28,6 +28,9 @@ export const HeroSection = () => {
           <Image
             src={fondo}
             alt="Fondo Hero"
+            preload={true}
+            quality={75}
+            loading="eager"
             fill
             className="object-cover object-top saturate-0 brightness-150"
           />
