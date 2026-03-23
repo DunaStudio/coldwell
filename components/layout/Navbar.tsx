@@ -32,7 +32,7 @@ export const Navbar = () => {
       <header
         className={`transition-colors duration-300 ${
           scrolled ? "bg-gray-500/30 backdrop-blur-md" : "bg-transparent"
-        } top-0 right-0 md:left-0 md:w-full md:rounded-none text-white font-sans fixed z-50 rounded-2xl m-3 md:m-0`}
+        } top-0 right-0 md:left-0 md:w-full md:rounded-none text-white font-sans fixed z-200 rounded-2xl m-3 md:m-0`}
       >
         <div className="w-full max-w-350 mx-auto px-6 py-3 md:px-8 md:py-5 flex justify-end md:justify-center lg:justify-between items-center relative">
           <Link

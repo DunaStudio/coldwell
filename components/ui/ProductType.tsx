@@ -87,9 +87,14 @@ export default function ProductType() {
               </p>
             </div>
 
-            <button className="mt-auto border bg-primary text-white px-8 py-3 text-[18px] w-min hover:bg-white hover:text-primary hover:border-primary transition-all ease-in-out duration-150 cursor-pointer">
+            <a
+              href={`https://wa.me/542646252213?text=${encodeURIComponent(`Hola Coldwell!`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-auto border bg-primary text-white px-8 py-3 text-[18px] w-min hover:bg-white hover:text-primary hover:border-primary transition-all ease-in-out duration-150 cursor-pointer whitespace-nowrap"
+            >
               Consultar
-            </button>
+            </a>
           </div>
         </div>
 

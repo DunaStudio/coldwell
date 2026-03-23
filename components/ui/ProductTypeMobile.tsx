@@ -71,9 +71,14 @@ export default function ProductTypeMobile() {
           <ArrowLeft />
         </button>
 
-        <button className="flex-1 bg-primary text-white text-[18px] font-light py-4 text-center border-x border-lightGray hover:bg-white hover:text-primary transition-all duration-150 ">
+        <a
+          href={`https://wa.me/542646252213?text=${encodeURIComponent(`Hola Coldwell!`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1 bg-primary text-white text-[18px] font-light py-4 text-center border-x border-lightGray hover:bg-white hover:text-primary transition-all duration-150 "
+        >
           Consultar
-        </button>
+        </a>
 
         <button
           onClick={next}

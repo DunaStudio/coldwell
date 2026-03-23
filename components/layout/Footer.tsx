@@ -19,7 +19,7 @@ export const Footer = () => {
             </Link>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61574628097961"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-white flex items-center justify-center hover:bg-white hover:text-[#15007E] transition-colors"
@@ -27,7 +27,7 @@ export const Footer = () => {
                 <Facebook size={20} strokeWidth={1.5} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/coldwell_neumaticos/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 border border-white flex items-center justify-center hover:bg-white hover:text-[#15007E] transition-colors"
