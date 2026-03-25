@@ -118,14 +118,13 @@ export default function CompanySection() {
           </p>
           <hr className="mb-6 lg:mb-10" />
           <h3 className="text-[24px] lg:text-[36px] font-normal leading-[115%] mb-6 lg:mb-10">
-            Calidad y servicio en cada detalle de tu vehículo
+            Conocé más sobre nosotros
           </h3>
           <p className="text-[14px] lg:text-[18px] font-light">
-            En Coldwell Neumáticos, entendemos que tu vehículo es mucho más que
-            un medio de transporte: es lo que te lleva a tu trabajo, a tus
-            viajes y, sobre todo, lo que protege a los que más querés. Por eso,
-            nos dedicamos a brindar soluciones integrales que garantizan el
-            máximo rendimiento y confort en cada kilómetro.
+            Más que vendedores, somos un equipo técnico listo para asesorarte.
+            Nuestro compromiso es simple y directo: que te vayas del taller con
+            la tranquilidad de que tu auto o camioneta quedó en las mejores
+            manos
             <br />
             <br />
             No solo vas a encontrar productos de alta gama, sino también el
