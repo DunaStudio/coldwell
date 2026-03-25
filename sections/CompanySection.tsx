@@ -127,10 +127,10 @@ export default function CompanySection() {
             manos
             <br />
             <br />
-            No solo vas a encontrar productos de alta gama, sino también el
-            respaldo de un equipo apasionado por la mecánica y el servicio al
-            cliente. Nuestro compromiso es simple: que manejes con la
-            tranquilidad de saber que tu auto está en las mejores manos.
+            Sabemos que tu vehículo te acompaña todos los días, ya sea para
+            trabajar o para viajar con tu familia. Por eso, en Coldwell
+            Neumáticos no solo te ofrecemos las mejores marcas del mercado, sino
+            que nos aseguramos de que salgas a la calle seguro.
           </p>
         </div>
 

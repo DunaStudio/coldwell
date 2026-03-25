@@ -103,7 +103,7 @@ export default function ProductTypeMobile() {
                 src={pt.bgImageSrc}
                 alt={pt.title}
                 fill
-                quality={50}
+                quality={75}
                 loading={i === 0 ? "eager" : "lazy"}
                 className="object-cover"
               />
@@ -124,7 +124,7 @@ export default function ProductTypeMobile() {
               src={pt.mainImageSrc}
               alt={pt.title}
               fill
-              quality={50}
+              quality={75}
               loading={i === 0 ? "eager" : "lazy"}
               className="object-contain object-bottom"
             />
