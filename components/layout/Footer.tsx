@@ -39,31 +39,37 @@ export const Footer = () => {
 
           <nav className="flex flex-row md:flex-col justify-center flex-wrap gap-x-4 gap-y-2 text-[14px] md:text-[16px] font-light">
             <Link
-              href="#inicio"
+              href="/#inicio"
               className="hover:text-gray-300 transition-colors"
             >
               Inicio
             </Link>
             <Link
-              href="#empresa"
+              href="/#empresa"
               className="hover:text-gray-300 transition-colors"
             >
               Empresa
             </Link>
             <Link
-              href="#productos"
+              href="/#productos"
               className="hover:text-gray-300 transition-colors"
             >
               Productos
             </Link>
             <Link
-              href="#servicios"
+              href="/productos"
+              className="hover:text-gray-300 transition-colors"
+            >
+              Catálogo
+            </Link>
+            <Link
+              href="/#servicios"
               className="hover:text-gray-300 transition-colors"
             >
               Servicios
             </Link>
             <Link
-              href="#contacto"
+              href="/#contacto"
               className="hover:text-gray-300 transition-colors"
             >
               Contacto

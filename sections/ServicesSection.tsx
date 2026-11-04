@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import ServiceCard from "@/components/ui/ServiceCard";
 import { services } from "@/utils/constants";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function ServicesSection() {
   const [isMobile, setIsMobile] = useState(false);
@@ -46,6 +47,12 @@ export default function ServicesSection() {
                 Mantenimiento y Cuidado <br className="hidden lg:block" />
                 Integral
               </p>
+              <Link
+                href="/productos"
+                className="inline-block mt-6 border border-white text-white px-8 py-3 text-[16px] lg:text-[18px] hover:bg-white hover:text-primary transition-all ease-in-out duration-150"
+              >
+                Ver catálogo
+              </Link>
             </div>
           </div>
 
