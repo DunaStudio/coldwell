@@ -104,6 +104,13 @@ export const Footer = () => {
               Duna Studio
             </a>
           </span>
+          <span className="text-[#2000C3]">/</span>
+          <Link
+            href="/admin"
+            className="hover:text-[#15007E] transition-colors duration-300"
+          >
+            Administrar
+          </Link>
         </p>
       </div>
     </footer>

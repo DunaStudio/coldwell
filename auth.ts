@@ -21,7 +21,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     sessionsTable: sessions,
     verificationTokensTable: verificationTokens,
   }),
-  providers: [Google],
+  // select_account: deja elegir otra cuenta de Google en vez de entrar con la última usada.
+  providers: [Google({ authorization: { params: { prompt: "select_account" } } })],
   session: { strategy: "jwt" },
   pages: { signIn: "/ingresar" },
   callbacks: {

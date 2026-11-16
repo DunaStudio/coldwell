@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { auth, signIn } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
 import logo from "@/public/images/Logo.png";
 
 export const metadata = { title: "Ingresar | Coldwell Neumáticos" };
@@ -56,6 +56,27 @@ export default async function LoginPage({
             Ingresar con Google
           </button>
         </form>
+        {session && (
+          <form
+            action={async () => {
+              "use server";
+              await signOut({ redirectTo: "/ingresar" });
+            }}
+          >
+            <button
+              type="submit"
+              className="w-full border border-primary text-primary px-8 py-3 hover:bg-lightGray transition-colors cursor-pointer"
+            >
+              Cerrar sesión de {session.user.email}
+            </button>
+          </form>
+        )}
+        <Link
+          href="/"
+          className="text-center text-secondary font-light text-sm hover:text-primary"
+        >
+          ← Volver a la página
+        </Link>
       </div>
     </div>
   );

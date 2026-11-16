@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CartSheet } from "@/features/cart/CartSheet";
+import { AdminQuickBar } from "@/features/admin/components/AdminQuickBar";
 
 export default function SiteLayout({
   children,
@@ -13,6 +14,7 @@ export default function SiteLayout({
       <main className="min-h-screen">{children}</main>
       <Footer />
       <CartSheet />
+      <AdminQuickBar />
     </>
   );
 }
