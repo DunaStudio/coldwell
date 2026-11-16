@@ -74,7 +74,7 @@ export default async function ProductPage({ params }: Props) {
               {product.name}
             </h1>
             {sale ? (
-              <div className="flex flex-col gap-3 mt-2 border-l-4 border-sale bg-sale/5 pl-4 pr-3 py-4">
+              <div className="flex flex-col gap-3 mt-2">
                 <span className="flex items-stretch w-fit text-sm font-medium">
                   <span className="bg-sale text-white px-3 py-1 uppercase tracking-wider">
                     Oferta
@@ -84,7 +84,7 @@ export default async function ProductPage({ params }: Props) {
                   </span>
                 </span>
                 <div className="flex items-baseline gap-3 flex-wrap">
-                  <span className="text-sale text-[36px] font-medium leading-none">
+                  <span className="text-primary text-[36px] font-medium leading-none">
                     {formatPrice(product.price)}
                   </span>
                   <span className="text-secondary text-[20px] line-through font-light">

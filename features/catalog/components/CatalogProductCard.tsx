@@ -32,9 +32,7 @@ export function CatalogProductCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`group border bg-white flex flex-col h-full ${
-        sale ? "border-sale/40" : "border-lightGray"
-      }`}
+      className="group border border-lightGray bg-white flex flex-col h-full"
     >
       <Link
         href={`/productos/${product.slug}`}
@@ -85,11 +83,7 @@ export function CatalogProductCard({
               {formatPrice(sale.compareAtPrice)}
             </span>
           )}
-          <span
-            className={`text-[20px] font-medium ${
-              sale ? "text-sale" : "text-primary"
-            }`}
-          >
+          <span className="text-primary text-[20px] font-medium">
             {formatPrice(product.price)}
           </span>
           {sale && (
