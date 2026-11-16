@@ -1,6 +1,6 @@
 import "server-only";
 import { cache } from "react";
-import { and, asc, desc, eq, isNotNull, sql, type SQL } from "drizzle-orm";
+import { and, asc, desc, eq, type SQL } from "drizzle-orm";
 import { db } from "@/db";
 import { categories, productImages, products } from "@/db/schema";
 
@@ -22,38 +22,10 @@ export function getCategories() {
   });
 }
 
-/** Marcas distintas entre los productos visibles, para el filtro. */
-export async function getBrands() {
-  const rows = await db
-    .selectDistinct({ brand: products.brand })
-    .from(products)
-    .where(and(eq(products.isActive, true), isNotNull(products.brand)))
-    .orderBy(asc(products.brand));
-  return rows.map((r) => r.brand!).filter(Boolean);
-}
-
-export async function getActiveProducts(filters: {
-  categorySlug?: string;
-  brand?: string;
-} = {}) {
-  const conditions: SQL[] = [eq(products.isActive, true)];
-
-  if (filters.categorySlug) {
-    const cat = await db.query.categories.findFirst({
-      where: eq(categories.slug, filters.categorySlug),
-    });
-    if (!cat) return [];
-    conditions.push(eq(products.categoryId, cat.id));
-  }
-
-  if (filters.brand) {
-    conditions.push(
-      sql`lower(${products.brand}) = ${filters.brand.toLowerCase()}`,
-    );
-  }
-
+/** Todos los productos visibles; los filtros se aplican en la página. */
+export function getActiveProducts() {
   return db.query.products.findMany({
-    where: and(...conditions),
+    where: eq(products.isActive, true),
     orderBy: [desc(products.createdAt)],
     with: withImagesAndCategory,
   });
