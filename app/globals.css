@@ -14,16 +14,11 @@
   --color-secondary: #707286;
   --color-tertiary: #5c5e75;
   --color-lightGray: #f0f0f0;
+  /* Verde de descuento (convención "% OFF"), reservado para ofertas. */
+  --color-sale: #00a650;
 
   --animate-scroll-up: scroll-up 12s linear infinite;
   --animate-scroll-down: scroll-down 12s linear infinite;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 @keyframes scroll-up {

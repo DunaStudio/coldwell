@@ -2,6 +2,7 @@ import ProductCard from "@/components/ui/ProductCard";
 import ProductType from "@/components/ui/ProductType";
 import ProductTypeMobile from "@/components/ui/ProductTypeMobile";
 import { products } from "@/utils/constants";
+import Link from "next/link";
 
 export default function ProductsSection() {
   return (
@@ -29,6 +30,14 @@ export default function ProductsSection() {
       </div>
       <div className="max-w-350 hidden lg:flex lg:justify-center w-full mx-auto px-5 ">
         <ProductType />
+      </div>
+      <div className="w-full flex justify-center px-5 pb-12 pt-8 lg:pt-10 relative z-20">
+        <Link
+          href="/productos"
+          className="border border-white bg-white text-primary px-8 py-3 text-[18px] hover:bg-primary hover:text-white transition-all ease-in-out duration-150 whitespace-nowrap"
+        >
+          Ver catálogo
+        </Link>
       </div>
       <div className="bg-primary w-full h-[35%] absolute bottom-0 border-red-500 z-10"></div>
     </section>

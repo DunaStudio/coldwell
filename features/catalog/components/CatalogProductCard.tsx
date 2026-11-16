@@ -1,0 +1,108 @@
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "motion/react";
+import { ImageOff } from "lucide-react";
+import { formatPrice, getSale } from "@/utils/format";
+import { AddToCartButton } from "./AddToCartButton";
+
+export type CardProduct = {
+  id: string;
+  slug: string;
+  name: string;
+  brand: string | null;
+  price: number;
+  compareAtPrice: number | null;
+  image: string | null;
+  category: string | null;
+};
+
+export function CatalogProductCard({
+  product,
+  priority = false,
+}: {
+  product: CardProduct;
+  priority?: boolean;
+}) {
+  const sale = getSale(product.price, product.compareAtPrice);
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      className="group border border-lightGray bg-white flex flex-col h-full"
+    >
+      <Link
+        href={`/productos/${product.slug}`}
+        className="relative block aspect-square overflow-hidden bg-lightGray"
+      >
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            priority={priority}
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-secondary">
+            <ImageOff size={32} strokeWidth={1} />
+          </div>
+        )}
+        <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+        {sale && (
+          <span className="absolute top-0 left-0 flex items-stretch text-white text-sm font-medium shadow-md">
+            <span className="bg-sale px-3 py-1.5 uppercase tracking-wider">
+              Oferta
+            </span>
+            <span className="bg-white text-sale px-2.5 py-1.5">
+              -{sale.discount}%
+            </span>
+          </span>
+        )}
+      </Link>
+
+      <div className="p-4 flex flex-col gap-2 flex-1">
+        {(product.brand || product.category) && (
+          <p className="text-secondary text-xs uppercase tracking-wider font-light">
+            {[product.brand, product.category].filter(Boolean).join(" · ")}
+          </p>
+        )}
+        <Link
+          href={`/productos/${product.slug}`}
+          className="text-primary text-[18px] leading-tight hover:underline"
+        >
+          {product.name}
+        </Link>
+        <div className="flex flex-col mt-auto pt-2">
+          {sale && (
+            <span className="text-secondary text-sm line-through font-light">
+              {formatPrice(sale.compareAtPrice)}
+            </span>
+          )}
+          <span className="text-primary text-[20px] font-medium">
+            {formatPrice(product.price)}
+          </span>
+          {sale && (
+            <span className="text-sale text-sm">
+              Ahorrás {formatPrice(sale.savings)}
+            </span>
+          )}
+        </div>
+        <AddToCartButton
+          product={{
+            id: product.id,
+            slug: product.slug,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+          }}
+          compact
+        />
+      </div>
+    </motion.article>
+  );
+}
