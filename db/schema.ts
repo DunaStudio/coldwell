@@ -25,6 +25,7 @@ export const products = pgTable("products", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
   slug: text("slug").notNull().unique(),
+  brand: text("brand"),
   description: text("description"),
   // Precios en pesos enteros (sin centavos).
   price: integer("price").notNull(),

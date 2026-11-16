@@ -63,6 +63,14 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-3 pb-6 border-b border-lightGray">
+            {product.brand && (
+              <Link
+                href={`/productos?marca=${encodeURIComponent(product.brand)}`}
+                className="text-secondary text-sm uppercase tracking-wider font-light hover:text-primary w-fit"
+              >
+                {product.brand}
+              </Link>
+            )}
             <h1 className="text-primary text-[28px] lg:text-[40px] font-normal leading-[115%]">
               {product.name}
             </h1>

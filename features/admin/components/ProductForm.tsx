@@ -13,6 +13,7 @@ type Category = { id: string; name: string };
 export type ProductFormValues = {
   name: string;
   slug: string;
+  brand: string;
   description: string;
   price: string;
   compareAtPrice: string;
@@ -25,6 +26,7 @@ export type ProductFormValues = {
 const empty: ProductFormValues = {
   name: "",
   slug: "",
+  brand: "",
   description: "",
   price: "",
   compareAtPrice: "",
@@ -42,10 +44,12 @@ export function ProductForm({
   id = null,
   initial,
   categories,
+  brands = [],
 }: {
   id?: string | null;
   initial?: ProductFormValues;
   categories: Category[];
+  brands?: string[];
 }) {
   const router = useRouter();
   const [values, setValues] = useState<ProductFormValues>(initial ?? empty);
@@ -116,6 +120,7 @@ export function ProductForm({
       const res = await saveProduct(id, {
         name: values.name,
         slug: values.slug,
+        brand: values.brand,
         description: values.description,
         price: values.price === "" ? Number.NaN : Number(values.price),
         compareAtPrice:
@@ -154,6 +159,23 @@ export function ProductForm({
             onChange={(e) => onName(e.target.value)}
             required
           />
+        </label>
+
+        <label className="flex flex-col gap-2">
+          <span className={labelClass}>Marca</span>
+          <input
+            className={inputClass}
+            value={values.brand}
+            onChange={(e) => set("brand", e.target.value)}
+            list="brand-options"
+            placeholder="Ej: Firemax"
+            autoComplete="off"
+          />
+          <datalist id="brand-options">
+            {brands.map((b) => (
+              <option key={b} value={b} />
+            ))}
+          </datalist>
         </label>
 
         <label className="flex flex-col gap-2">

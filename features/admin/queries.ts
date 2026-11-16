@@ -1,5 +1,5 @@
 import "server-only";
-import { asc, desc, eq } from "drizzle-orm";
+import { asc, desc, eq, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { categories, productImages, products } from "@/db/schema";
 
@@ -28,6 +28,16 @@ export function getAdminProduct(id: string) {
     where: eq(products.id, id),
     with: { images: { orderBy: [asc(productImages.position)] } },
   });
+}
+
+/** Todas las marcas ya usadas, para sugerirlas en el formulario. */
+export async function getAdminBrands() {
+  const rows = await db
+    .selectDistinct({ brand: products.brand })
+    .from(products)
+    .where(isNotNull(products.brand))
+    .orderBy(asc(products.brand));
+  return rows.map((r) => r.brand!).filter(Boolean);
 }
 
 export async function getAdminCategories() {

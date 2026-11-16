@@ -45,6 +45,7 @@ const productSchema = z
   .object({
     name: z.string().trim().min(1, "El nombre es obligatorio"),
     slug: z.string().trim().optional(),
+    brand: z.string().trim().max(60, "La marca es demasiado larga").optional(),
     description: z.string().trim().optional(),
     price: z.coerce
       .number({ message: "El precio debe ser un número" })
@@ -92,6 +93,7 @@ export async function saveProduct(
   const values = {
     name: d.name,
     slug,
+    brand: d.brand || null,
     description: d.description || null,
     price: d.price,
     compareAtPrice: d.compareAtPrice ?? null,

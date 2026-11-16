@@ -1,9 +1,12 @@
 import Link from "next/link";
-import { getAdminCategories } from "@/features/admin/queries";
+import { getAdminBrands, getAdminCategories } from "@/features/admin/queries";
 import { ProductForm } from "@/features/admin/components/ProductForm";
 
 export default async function NewProductPage() {
-  const categories = await getAdminCategories();
+  const [categories, brands] = await Promise.all([
+    getAdminCategories(),
+    getAdminBrands(),
+  ]);
 
   return (
     <div className="flex flex-col gap-6">
@@ -20,6 +23,7 @@ export default async function NewProductPage() {
       </div>
       <ProductForm
         categories={categories.map((c) => ({ id: c.id, name: c.name }))}
+        brands={brands}
       />
     </div>
   );

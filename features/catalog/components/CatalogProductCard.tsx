@@ -10,6 +10,7 @@ export type CardProduct = {
   id: string;
   slug: string;
   name: string;
+  brand: string | null;
   price: number;
   compareAtPrice: number | null;
   image: string | null;
@@ -64,9 +65,9 @@ export function CatalogProductCard({
       </Link>
 
       <div className="p-4 flex flex-col gap-2 flex-1">
-        {product.category && (
+        {(product.brand || product.category) && (
           <p className="text-secondary text-xs uppercase tracking-wider font-light">
-            {product.category}
+            {[product.brand, product.category].filter(Boolean).join(" · ")}
           </p>
         )}
         <Link

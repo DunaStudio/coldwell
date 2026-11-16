@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { z } from "zod";
 import {
+  getAdminBrands,
   getAdminCategories,
   getAdminProduct,
 } from "@/features/admin/queries";
@@ -15,9 +16,10 @@ export default async function EditProductPage({
   const { id } = await params;
   if (!z.string().uuid().safeParse(id).success) notFound();
 
-  const [product, categories] = await Promise.all([
+  const [product, categories, brands] = await Promise.all([
     getAdminProduct(id),
     getAdminCategories(),
+    getAdminBrands(),
   ]);
   if (!product) notFound();
 
@@ -37,9 +39,11 @@ export default async function EditProductPage({
       <ProductForm
         id={product.id}
         categories={categories.map((c) => ({ id: c.id, name: c.name }))}
+        brands={brands}
         initial={{
           name: product.name,
           slug: product.slug,
+          brand: product.brand ?? "",
           description: product.description ?? "",
           price: String(product.price),
           compareAtPrice:
