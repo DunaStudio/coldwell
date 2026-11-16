@@ -14,6 +14,8 @@
   --color-secondary: #707286;
   --color-tertiary: #5c5e75;
   --color-lightGray: #f0f0f0;
+  /* Rojo del logo, reservado para ofertas. */
+  --color-sale: #e1251b;
 
   --animate-scroll-up: scroll-up 12s linear infinite;
   --animate-scroll-down: scroll-down 12s linear infinite;

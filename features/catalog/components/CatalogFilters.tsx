@@ -5,6 +5,7 @@ export type FilterOption = {
   href: string;
   count: number;
   active: boolean;
+  tone?: "sale";
 };
 
 export type FilterGroup = {
@@ -24,16 +25,27 @@ export function CatalogFilters({ groups }: { groups: FilterGroup[] }) {
           <ul className="flex flex-col">
             {group.options.map((opt) => {
               const disabled = opt.count === 0 && !opt.active;
+              const sale = opt.tone === "sale";
               const base =
                 "flex items-center justify-between gap-3 py-2.5 pl-3 pr-2 border-l-2 transition-colors";
+              const activeClass = sale
+                ? "border-sale bg-sale/10 text-sale font-medium"
+                : "border-primary bg-lightGray/60 text-primary font-medium";
+              const idleClass = sale
+                ? "border-transparent text-sale hover:border-sale/40"
+                : "border-transparent text-tertiary font-light hover:text-primary hover:border-lightGray";
               const content = (
                 <>
                   <span>{opt.label}</span>
                   <span
                     className={`text-xs min-w-6 text-center px-1.5 py-0.5 ${
                       opt.active
-                        ? "bg-primary text-white"
-                        : "bg-lightGray text-secondary"
+                        ? sale
+                          ? "bg-sale text-white"
+                          : "bg-primary text-white"
+                        : sale
+                          ? "bg-sale/10 text-sale"
+                          : "bg-lightGray text-secondary"
                     }`}
                   >
                     {opt.count}
@@ -55,11 +67,7 @@ export function CatalogFilters({ groups }: { groups: FilterGroup[] }) {
                       href={opt.href}
                       scroll={false}
                       aria-current={opt.active ? "true" : undefined}
-                      className={`${base} ${
-                        opt.active
-                          ? "border-primary bg-lightGray/60 text-primary font-medium"
-                          : "border-transparent text-tertiary font-light hover:text-primary hover:border-lightGray"
-                      }`}
+                      className={`${base} ${opt.active ? activeClass : idleClass}`}
                     >
                       {content}
                     </Link>

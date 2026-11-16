@@ -5,7 +5,7 @@ import { getProductBySlug } from "@/features/catalog/queries";
 import { ProductGallery } from "@/features/catalog/components/ProductGallery";
 import { AddToCartButton } from "@/features/catalog/components/AddToCartButton";
 import { WHATSAPP_NUMBER } from "@/features/cart/whatsapp";
-import { formatPrice } from "@/utils/format";
+import { formatPrice, getSale } from "@/utils/format";
 
 export const dynamic = "force-dynamic";
 
@@ -29,8 +29,7 @@ export default async function ProductPage({ params }: Props) {
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  const onSale =
-    product.compareAtPrice != null && product.compareAtPrice > product.price;
+  const sale = getSale(product.price, product.compareAtPrice);
 
   const consult = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     `Hola Coldwell! Quería consultar por: ${product.name}`,
@@ -74,25 +73,33 @@ export default async function ProductPage({ params }: Props) {
             <h1 className="text-primary text-[28px] lg:text-[40px] font-normal leading-[115%]">
               {product.name}
             </h1>
-            <div className="flex items-baseline gap-3 flex-wrap">
+            {sale ? (
+              <div className="flex flex-col gap-3 mt-2 border-l-4 border-sale bg-sale/5 pl-4 pr-3 py-4">
+                <span className="flex items-stretch w-fit text-sm font-medium">
+                  <span className="bg-sale text-white px-3 py-1 uppercase tracking-wider">
+                    Oferta
+                  </span>
+                  <span className="bg-white text-sale border border-sale px-2.5 py-1">
+                    -{sale.discount}%
+                  </span>
+                </span>
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <span className="text-sale text-[36px] font-medium leading-none">
+                    {formatPrice(product.price)}
+                  </span>
+                  <span className="text-secondary text-[20px] line-through font-light">
+                    {formatPrice(sale.compareAtPrice)}
+                  </span>
+                </div>
+                <span className="text-sale">
+                  Ahorrás {formatPrice(sale.savings)}
+                </span>
+              </div>
+            ) : (
               <span className="text-primary text-[32px] font-medium">
                 {formatPrice(product.price)}
               </span>
-              {onSale && (
-                <>
-                  <span className="text-secondary text-[20px] line-through font-light">
-                    {formatPrice(product.compareAtPrice!)}
-                  </span>
-                  <span className="bg-primary text-white text-sm px-3 py-1">
-                    -
-                    {Math.round(
-                      (1 - product.price / product.compareAtPrice!) * 100,
-                    )}
-                    %
-                  </span>
-                </>
-              )}
-            </div>
+            )}
           </div>
 
           {product.description && (

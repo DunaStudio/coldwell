@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ImageOff } from "lucide-react";
-import { formatPrice } from "@/utils/format";
+import { formatPrice, getSale } from "@/utils/format";
 import { AddToCartButton } from "./AddToCartButton";
 
 export type CardProduct = {
@@ -24,11 +24,7 @@ export function CatalogProductCard({
   product: CardProduct;
   priority?: boolean;
 }) {
-  const onSale =
-    product.compareAtPrice != null && product.compareAtPrice > product.price;
-  const discount = onSale
-    ? Math.round((1 - product.price / product.compareAtPrice!) * 100)
-    : 0;
+  const sale = getSale(product.price, product.compareAtPrice);
 
   return (
     <motion.article
@@ -36,7 +32,9 @@ export function CatalogProductCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="group border border-lightGray bg-white flex flex-col h-full"
+      className={`group border bg-white flex flex-col h-full ${
+        sale ? "border-sale/40" : "border-lightGray"
+      }`}
     >
       <Link
         href={`/productos/${product.slug}`}
@@ -57,9 +55,14 @@ export function CatalogProductCard({
           </div>
         )}
         <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-        {onSale && (
-          <span className="absolute top-0 left-0 bg-primary text-white text-sm px-3 py-1">
-            -{discount}%
+        {sale && (
+          <span className="absolute top-0 left-0 flex items-stretch text-white text-sm font-medium shadow-md">
+            <span className="bg-sale px-3 py-1.5 uppercase tracking-wider">
+              Oferta
+            </span>
+            <span className="bg-white text-sale px-2.5 py-1.5">
+              -{sale.discount}%
+            </span>
           </span>
         )}
       </Link>
@@ -76,13 +79,22 @@ export function CatalogProductCard({
         >
           {product.name}
         </Link>
-        <div className="flex items-baseline gap-2 flex-wrap mt-auto pt-2">
-          <span className="text-primary text-[20px] font-medium">
+        <div className="flex flex-col mt-auto pt-2">
+          {sale && (
+            <span className="text-secondary text-sm line-through font-light">
+              {formatPrice(sale.compareAtPrice)}
+            </span>
+          )}
+          <span
+            className={`text-[20px] font-medium ${
+              sale ? "text-sale" : "text-primary"
+            }`}
+          >
             {formatPrice(product.price)}
           </span>
-          {onSale && (
-            <span className="text-secondary text-sm line-through font-light">
-              {formatPrice(product.compareAtPrice!)}
+          {sale && (
+            <span className="text-sale text-sm">
+              Ahorrás {formatPrice(sale.savings)}
             </span>
           )}
         </div>

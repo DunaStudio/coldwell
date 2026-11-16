@@ -14,6 +14,7 @@ import {
   type FilterGroup,
 } from "@/features/catalog/components/CatalogFilters";
 import { MobileFilters } from "@/features/catalog/components/MobileFilters";
+import { getSale } from "@/utils/format";
 
 export const dynamic = "force-dynamic";
 
@@ -23,10 +24,13 @@ export const metadata: Metadata = {
     "Neumáticos para autos, camionetas, camiones y maquinaria vial y agrícola. Pedí por WhatsApp.",
 };
 
-function catalogHref(categoria?: string, marca?: string) {
+type Filters = { categoria?: string; marca?: string; oferta?: boolean };
+
+function catalogHref({ categoria, marca, oferta }: Filters) {
   const params = new URLSearchParams();
   if (categoria) params.set("categoria", categoria);
   if (marca) params.set("marca", marca);
+  if (oferta) params.set("oferta", "1");
   const qs = params.toString();
   return qs ? `/productos?${qs}` : "/productos";
 }
@@ -34,10 +38,9 @@ function catalogHref(categoria?: string, marca?: string) {
 export default async function CatalogPage({
   searchParams,
 }: {
-  searchParams: Promise<{ categoria?: string; marca?: string }>;
+  searchParams: Promise<{ categoria?: string; marca?: string; oferta?: string }>;
 }) {
-  const { categoria, marca } = await searchParams;
-  const filtered = Boolean(categoria || marca);
+  const sp = await searchParams;
 
   const [categories, featured, all] = await Promise.all([
     getCategories(),
@@ -45,18 +48,6 @@ export default async function CatalogPage({
     getFeaturedProducts(),
     getActiveProducts(),
   ]);
-
-  const current = categories.find((c) => c.slug === categoria);
-  const brandKey = marca?.toLowerCase();
-
-  const matchesCategory = (p: (typeof all)[number], slug?: string) =>
-    !slug || p.category?.slug === slug;
-  const matchesBrand = (p: (typeof all)[number], key?: string) =>
-    !key || p.brand?.toLowerCase() === key;
-
-  const products = all.filter(
-    (p) => matchesCategory(p, categoria) && matchesBrand(p, brandKey),
-  );
 
   // Marcas presentes en el catálogo (respetando mayúsculas de la primera carga).
   const brands = Array.from(
@@ -66,31 +57,64 @@ export default async function CatalogPage({
         .map((p) => [p.brand!.toLowerCase(), p.brand!] as const),
     ).values(),
   ).sort((a, b) => a.localeCompare(b, "es"));
-  const currentBrand = brands.find((b) => b.toLowerCase() === brandKey);
 
-  // Cada conteo respeta el otro filtro activo (ej: "Autos" cuenta solo Pace si
-  // hay marca Pace elegida), así nunca se llega a una página vacía sin aviso.
-  const groups: FilterGroup[] = [
-    {
-      title: "Categoría",
+  const current = categories.find((c) => c.slug === sp.categoria);
+  const currentBrand = brands.find(
+    (b) => b.toLowerCase() === sp.marca?.toLowerCase(),
+  );
+  // Filtros normalizados: los valores inválidos de la URL se ignoran.
+  const active: Filters = {
+    categoria: current?.slug,
+    marca: currentBrand,
+    oferta: sp.oferta === "1",
+  };
+  const filtered = Boolean(active.categoria || active.marca || active.oferta);
+
+  const matches = (p: (typeof all)[number], f: Filters) =>
+    (!f.categoria || p.category?.slug === f.categoria) &&
+    (!f.marca || p.brand?.toLowerCase() === f.marca.toLowerCase()) &&
+    (!f.oferta || getSale(p.price, p.compareAtPrice) !== null);
+  const countFor = (f: Filters) => all.filter((p) => matches(p, f)).length;
+
+  const products = all.filter((p) => matches(p, active));
+  const saleCount = countFor({ ...active, oferta: true });
+
+  // Cada conteo respeta los otros filtros activos, así nunca se llega a una
+  // página vacía sin aviso.
+  const groups: FilterGroup[] = [];
+
+  if (saleCount > 0 || active.oferta) {
+    groups.push({
+      title: "Promociones",
       options: [
         {
-          label: "Todas",
-          href: catalogHref(undefined, currentBrand),
-          count: all.filter((p) => matchesBrand(p, brandKey)).length,
-          active: !current,
+          label: "Solo ofertas",
+          href: catalogHref({ ...active, oferta: !active.oferta }),
+          count: saleCount,
+          active: !!active.oferta,
+          tone: "sale",
         },
-        ...categories.map((c) => ({
-          label: c.name,
-          href: catalogHref(c.slug, currentBrand),
-          count: all.filter(
-            (p) => matchesCategory(p, c.slug) && matchesBrand(p, brandKey),
-          ).length,
-          active: current?.id === c.id,
-        })),
       ],
-    },
-  ];
+    });
+  }
+
+  groups.push({
+    title: "Categoría",
+    options: [
+      {
+        label: "Todas",
+        href: catalogHref({ ...active, categoria: undefined }),
+        count: countFor({ ...active, categoria: undefined }),
+        active: !current,
+      },
+      ...categories.map((c) => ({
+        label: c.name,
+        href: catalogHref({ ...active, categoria: c.slug }),
+        count: countFor({ ...active, categoria: c.slug }),
+        active: current?.id === c.id,
+      })),
+    ],
+  });
 
   if (brands.length > 0) {
     groups.push({
@@ -98,18 +122,14 @@ export default async function CatalogPage({
       options: [
         {
           label: "Todas",
-          href: catalogHref(current?.slug),
-          count: all.filter((p) => matchesCategory(p, current?.slug)).length,
+          href: catalogHref({ ...active, marca: undefined }),
+          count: countFor({ ...active, marca: undefined }),
           active: !currentBrand,
         },
         ...brands.map((b) => ({
           label: b,
-          href: catalogHref(current?.slug, b),
-          count: all.filter(
-            (p) =>
-              matchesCategory(p, current?.slug) &&
-              matchesBrand(p, b.toLowerCase()),
-          ).length,
+          href: catalogHref({ ...active, marca: b }),
+          count: countFor({ ...active, marca: b }),
           active: currentBrand === b,
         })),
       ],
@@ -117,17 +137,23 @@ export default async function CatalogPage({
   }
 
   const activeChips = [
+    active.oferta && {
+      label: "Ofertas",
+      href: catalogHref({ ...active, oferta: false }),
+    },
     current && {
       label: current.name,
-      href: catalogHref(undefined, currentBrand),
+      href: catalogHref({ ...active, categoria: undefined }),
     },
     currentBrand && {
       label: currentBrand,
-      href: catalogHref(current?.slug),
+      href: catalogHref({ ...active, marca: undefined }),
     },
   ].filter(Boolean) as { label: string; href: string }[];
 
-  const title = [current?.name, currentBrand].filter(Boolean).join(" · ");
+  const title = [active.oferta && "Ofertas", current?.name, currentBrand]
+    .filter(Boolean)
+    .join(" · ");
 
   return (
     <div className="w-full">
