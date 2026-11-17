@@ -40,7 +40,7 @@ import kumho from "@/public/images/marcas/kumho.png";
 
 export const services = [
   {
-    title: "Alineación y Balance de precisión",
+    title: "Alineación y Balanceo de precisión",
     description:
       "Optimizamos la dirección y el rodado para un manejo suave, evitando el desgaste irregular y garantizando la estabilidad total en ruta.",
     imageSrc: alineacionImage,
