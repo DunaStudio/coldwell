@@ -78,7 +78,7 @@ export const Footer = () => {
 
           <div className="flex flex-col items-center md:items-end gap-4 text-[14px] md:text-[16px] font-light text-center md:text-right">
             <p>
-              Lun. a Vie. 08:00 - 13:00 y 17:00 - 21:00 | Sáb. 08:00 - 21:00
+              Lunes a Sábados de 08:30 a 21:00 hs de corrido
             </p>
             <p>Av. Mendoza 4287 Sur, esquina Boulevard Sarmiento</p>
             <p>neumaticoscoldwell@gmail.com</p>
